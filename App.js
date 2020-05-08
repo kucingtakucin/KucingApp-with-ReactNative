@@ -7,9 +7,22 @@
  */
 
 import React, {Component} from 'react';
-import { Text, TextInput, View, Image, ScrollView } from 'react-native';
+import { Text, TextInput, View, Image} from 'react-native';
 
 export default class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: '',
+        };
+    }
+
+    setText(newText){
+        this.setState({
+            text: newText,
+        });
+    }
+
     render() {
         return (
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -26,7 +39,13 @@ export default class App extends Component {
                         width: 250,
                         borderColor: 'gray',
                         borderWidth: 1,
-                    }} defaultValue="Halo semuanya!"/>
+                    }}
+                               placeholder="Halo semuanya!"
+                               onChangeText={text => this.setText(text)}
+                    />
+                    <Text style={{marginTop: 10}}>
+                        {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+                    </Text>
                 </View>
             </View>
         );
