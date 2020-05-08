@@ -1,5 +1,5 @@
 /**
- * Sample React Native App
+ * React Native App
  * https://github.com/facebook/react-native
  *
  * @format
@@ -7,48 +7,83 @@
  */
 
 import React, {Component} from 'react';
-import { Text, TextInput, View, Image} from 'react-native';
+import {
+    Text, TextInput, View, Image,
+    ScrollView, StyleSheet, ImageBackground} from 'react-native';
 
 export default class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            text: '',
-        };
+        this.state = {text: ''};
     }
 
     setText(newText){
-        this.setState({
-            text: newText,
-        });
+        this.setState({text: newText});
     }
 
     render() {
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <View style={{padding: 10, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <Text style={{fontWeight: 'bold'}}>Hello, World!</Text>
-                    <Text>Hai, namaku Adam, biasa dipanggil Arthur!</Text>
-                </View>
-                <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <Image source={{uri: 'https://reactnative.dev/docs/assets/p_cat2.png'}}
-                           style={{width: 200, height: 200}}
-                    />
-                    <TextInput style={{
-                        height: 40,
-                        width: 250,
-                        borderColor: 'gray',
-                        borderWidth: 1,
-                    }}
-                               placeholder="Halo semuanya!"
-                               onChangeText={text => this.setText(text)}
-                    />
-                    <Text style={{marginTop: 10}}>
-                        {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
-                    </Text>
-                </View>
-            </View>
+            <ImageBackground source={require('./img/android.png')} style={styles.backgroundImages}>
+                <ScrollView contentContainerStyle={styles.flexParent}>
+                    <View style={styles.flexChild}>
+                        <Image source={logo} style={styles.margin}/>
+                        <Text style={styles.fontWeightBold}>Hello, React Native!</Text>
+                        <Text>Hai, namaku Adam, biasa dipanggil Arthur!</Text>
+                    </View>
+                    <View style={styles.flexChild}>
+                        <Image source={{uri: 'https://reactnative.dev/docs/assets/p_cat2.png'}}
+                               style={styles.images}
+                        />
+                        <TextInput style={{
+                            height: 40,
+                            width: 250,
+                            borderColor: 'gray',
+                            borderWidth: 1,
+                        }}
+                                   placeholder="Halo semuanya!"
+                                   onChangeText={text => this.setText(text)}
+                        />
+                        <Text style={styles.margin}>
+                            {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+                        </Text>
+                    </View>
+                </ScrollView>
+            </ImageBackground>
         );
     }
 }
+
+const logo = {
+    uri: 'https://reactnative.dev/img/tiny_logo.png',
+    width: 64,
+    height: 64,
+};
+
+const styles = StyleSheet.create({
+    flexParent: {
+        display: 'flex',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    flexChild: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    margin: {
+        margin: 10,
+    },
+    fontWeightBold: {
+        fontWeight: 'bold',
+    },
+    images: {
+        width: 200,
+        height: 200,
+    },
+    backgroundImages: {
+        width: '100%',
+        height: '100%',
+    },
+});
 
