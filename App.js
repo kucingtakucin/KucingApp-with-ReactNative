@@ -8,8 +8,9 @@
 
 import React, {Component} from 'react';
 import {
-    Text, TextInput, View, Image,
-    ScrollView, StyleSheet, ImageBackground} from 'react-native';
+    Text, TextInput, View,
+    Image, ScrollView, StyleSheet,
+    ImageBackground} from 'react-native';
 
 export default class App extends Component {
     constructor(props) {
@@ -23,10 +24,10 @@ export default class App extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('./img/android.png')} style={styles.backgroundImages}>
+            <ImageBackground source={require('./img/android2.png')} style={styles.backgroundImages}>
                 <ScrollView contentContainerStyle={styles.flexParent}>
                     <View style={styles.flexChild}>
-                        <Image source={logo} style={styles.margin}/>
+                        <Image source={require('./img/React-icon2.png')} style={[styles.margin, styles.logo]}/>
                         <Text style={styles.fontWeightBold}>Hello, React Native!</Text>
                         <Text>Hai, namaku Adam, biasa dipanggil Arthur!</Text>
                     </View>
@@ -54,7 +55,8 @@ export default class App extends Component {
 }
 
 const logo = {
-    uri: 'https://reactnative.dev/img/tiny_logo.png',
+    // uri: 'https://reactnative.dev/img/tiny_logo.png',
+    uri: './img/React-icon2.png',
     width: 64,
     height: 64,
 };
@@ -84,6 +86,10 @@ const styles = StyleSheet.create({
     backgroundImages: {
         width: '100%',
         height: '100%',
+    },
+    logo: {
+        width: 72,
+        height: 64,
     },
 });
 
