@@ -24,23 +24,18 @@ export default class App extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('./img/android2.png')} style={styles.backgroundImages}>
-                <ScrollView contentContainerStyle={styles.flexParent}>
+            <ImageBackground source={require('./img/android2.png')} style={[styles.backgroundImages, styles.backgroundColour]}>
+                <ScrollView contentContainerStyle={[styles.flexParent]}>
                     <View style={styles.flexChild}>
                         <Image source={require('./img/React-icon2.png')} style={[styles.margin, styles.logo]}/>
-                        <Text style={styles.fontWeightBold}>Hello, React Native!</Text>
-                        <Text>Hai, namaku Adam, biasa dipanggil Arthur!</Text>
+                        <Text style={[styles.fontWeightBold, styles.white]}>Hello, React Native!</Text>
+                        <Text style={styles.white}>Hai, namaku Adam, biasa dipanggil Arthur!</Text>
                     </View>
                     <View style={styles.flexChild}>
                         <Image source={{uri: 'https://reactnative.dev/docs/assets/p_cat2.png'}}
                                style={styles.images}
                         />
-                        <TextInput style={{
-                            height: 40,
-                            width: 250,
-                            borderColor: 'gray',
-                            borderWidth: 1,
-                        }}
+                        <TextInput style={[styles.textInput, styles.white]}
                                    placeholder="Halo semuanya!"
                                    onChangeText={text => this.setText(text)}
                         />
@@ -90,6 +85,18 @@ const styles = StyleSheet.create({
     logo: {
         width: 72,
         height: 64,
+    },
+    backgroundColour: {
+        backgroundColor: '#282c34',
+    },
+    white: {
+        color: 'white',
+    },
+    textInput: {
+        height: 40,
+        width: 250,
+        borderColor: 'gray',
+        borderWidth: 1,
     },
 });
 
